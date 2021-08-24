@@ -17,12 +17,18 @@ Example url: http://localhost:4000/lengthen?shortURL=http://127.0.0.1:4000/dnvAX
  py .\main.py
 
 (venv) PS:> py .\main.py
+
  Serving Flask app 'main' (lazy loading)
- Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- Debug mode: off
- Running on http://127.0.0.1:4000/ (Press CTRL+C to quit)
+
+Environment: production
+
+WARNING: This is a development server. Do not use it in a production deployment.
+
+Use a production WSGI server instead.
+
+Debug mode: off
+
+Running on http://127.0.0.1:4000/ (Press CTRL+C to quit)
 
 Note: I wrote this in PyCharm. It can be ran in the IDE as well.
 
