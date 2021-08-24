@@ -15,7 +15,7 @@ def create_random_string():
     # Upper and lower case letters, 52 total
     letters = string.ascii_letters
     
-    # TODO: Check if this randomly generated string already exists in the database
+    # TODO: Check if this randomly generated string already exists in the database. If so, generated another one.
 
     # Generate a random string of 10 characters. Should give us a very large number of possible combinations.
     # However, there is the chance of getting a dup here.
