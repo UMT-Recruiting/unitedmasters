@@ -34,7 +34,7 @@ The unit tests are in the file test.py. They contains 3 unit tests that test the
 ## Notes
 I used approximately 2.5 hours for this. It broke down as:
 
--1 hour getting the basic Flask API setup and working (basic functionality)
+-1 hour getting the basic Flask API setup and the api endpoints working (basic functionality)
 
 -1 hour setting up some very basic unit tests, testing and fixing a bug or two
 
