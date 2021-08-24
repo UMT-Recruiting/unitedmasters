@@ -38,8 +38,7 @@ I used approximately 2.5 hours for this. It broke down as:
 
 -1 hour setting up some very basic unit tests, testing and fixing a bug or two
 
--Half an hour of over (re)architecting it and thinking about if my solution to generating random short urls was good or not :)
-
+-Half an hour of over/re-architecting it in my head after I finished as well as thinking about if my solution to generating random short urls could be improved :)
 ## Possible improvements
 
 -The random string generator is 10 characters long and is made up of 26 lower case and 26 upper case letters for a total of 52. That makes for a very large number of combinations. However, it is possible to get a dup, even with that many combinations. I also, briefly, considered using uuid's since those are supposed to always be unique but decided against it.
