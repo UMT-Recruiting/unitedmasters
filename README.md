@@ -42,7 +42,7 @@ I used approximately 2.5 hours for this. It broke down as:
 
 ## Possible improvements
 
--The random string generator is 10 characters long and it made up of 26 lower case and 26 upper case letters for a total of 52. That makes for a very large number of combinations. However, it is possible to get a dup, even with that many combinations. I also, briefly, considered using uuid's since those are supposed to always be unique but decided against it.
+-The random string generator is 10 characters long and is made up of 26 lower case and 26 upper case letters for a total of 52. That makes for a very large number of combinations. However, it is possible to get a dup, even with that many combinations. I also, briefly, considered using uuid's since those are supposed to always be unique but decided against it.
 
 -Ideally, I'd like to have each shortened URL have a "last accessed timestamp". This would allow shortened urls that haven't been used in x days/months/years to be cleaned up and recycled.
 
