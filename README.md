@@ -7,7 +7,7 @@ It takes a query parameter called url and returns a shortened url.
 Example url: http://127.0.0.1:4000/shorten?url=http://www.bryanpeabody.com
 
 2- The lengthen endpoint - /lengthen
-It takes a query parameter called shortURL and returns the original url, if it exists. If not, an empty string is returned.
+It takes a query parameter called shortURL and returns the original url, if it exists.
 
 Example url: http://localhost:4000/lengthen?shortURL=http://127.0.0.1:4000/dnvAXnJaBA
  
