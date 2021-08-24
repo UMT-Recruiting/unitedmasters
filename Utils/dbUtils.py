@@ -31,13 +31,33 @@ def init_db():
 
 
 #
+# Checks to see if the full url already has been shortened
+#
+def does_full_url_exist(fullURL):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT shortURL FROM urls WHERE fullURL=?", (fullURL,))
+    row = cursor.fetchone()
+
+    if row is not None:
+        return True
+
+    return False
+
+
+#
 # Add a URL pair. The pairs will be the short URL and the full URL
 #
 def add_url_pair(shortURL, fullURL):
-    conn = create_connection()
-    cur = conn.cursor()
-    cur.execute("INSERT INTO urls(shortURL, fullURL) VALUES(?, ?)", (shortURL, fullURL))
-    conn.commit()
+    try:
+        conn = create_connection()
+        cur = conn.cursor()
+        cur.execute("INSERT INTO urls(shortURL, fullURL) VALUES(?, ?)", (shortURL, fullURL))
+        conn.commit()
+
+        return True
+    except:
+        return False
 
 
 #

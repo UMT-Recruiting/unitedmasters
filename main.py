@@ -7,6 +7,7 @@ from flask import Flask
 from flask import request
 from Utils import utils
 from Utils import dbUtils
+import validators
 
 app = Flask(__name__)
 
@@ -14,8 +15,6 @@ app = Flask(__name__)
 HOST = '127.0.0.1'
 PORT = 4000
 
-
-# dbUtils.initDB()
 
 #
 # Routes
@@ -33,17 +32,25 @@ def shortenURL():
     # Get the URL from the request
     fullURL = request.args.get('url')
 
-    # Generate a random string that will be used for the shortened URL
-    randomString = utils.create_random_string()
+    # Is the URL valid?
+    if not validators.url(fullURL):
+        return "Invalid URL!"
 
-    # Create the full shortened URL
-    shortURL = utils.create_shortened_url_string(HOST, PORT, randomString)
+    # Does fullURL already have a short URL?
+    if dbUtils.does_full_url_exist(fullURL) == False:
+        # Generate a random string that will be used for the shortened URL
+        randomString = utils.create_random_string()
 
-    # Persist the new pair
-    dbUtils.add_url_pair(shortURL, fullURL)
+        # Create the full shortened URL
+        shortURL = utils.create_shortened_url_string(HOST, PORT, randomString)
 
-    # Return the shortened address
-    return shortURL
+        # Persist the new pair
+        dbUtils.add_url_pair(shortURL, fullURL)
+
+        # Return the shortened address
+        return shortURL
+    else:
+        return "The URL already exists!"
 
 
 # The route to translate a shortened URL to the full, original URL
