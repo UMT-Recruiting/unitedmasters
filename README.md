@@ -29,7 +29,7 @@ I developed this using Python 3, PyCharm and Flask. There are a couple of depend
 ## Unit tests
 The unit tests are in the file test.py. They contains 3 unit tests that test the basic functionality of the service.
 
-Example: python -m unittest test
+> python -m unittest test
 
 ## Notes
 I used approximately 2.5 hours for this. It broke down as:
