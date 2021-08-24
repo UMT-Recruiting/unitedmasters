@@ -33,26 +33,30 @@ def init_db():
 #
 # Checks to see if the full url already has been shortened
 #
-def does_full_url_exist(fullURL):
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT shortURL FROM urls WHERE fullURL=?", (fullURL,))
-    row = cursor.fetchone()
+def does_full_url_exist(full_url):
+    try:
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT shortURL FROM urls WHERE fullURL=?", (full_url,))
 
-    if row is not None:
-        return True
+        row = cursor.fetchone()
 
-    return False
+        if row is not None:
+            return True
+
+        return False
+    except:
+        return False
 
 
 #
 # Add a URL pair. The pairs will be the short URL and the full URL
 #
-def add_url_pair(shortURL, fullURL):
+def add_url_pair(short_url, full_url):
     try:
         conn = create_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO urls(shortURL, fullURL) VALUES(?, ?)", (shortURL, fullURL))
+        cur.execute("INSERT INTO urls(shortURL, fullURL) VALUES(?, ?)", (short_url, full_url))
         conn.commit()
 
         return True
@@ -63,17 +67,20 @@ def add_url_pair(shortURL, fullURL):
 #
 # Looks up the short url and returns the full url, if it exists. If not, an empty string is returned.
 #
-def get_full_url(shortURL):
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT fullURL FROM urls WHERE shortURL=?", (shortURL,))
-    row = cursor.fetchone()
+def get_full_url(short_url):
+    try:
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT fullURL FROM urls WHERE shortURL=?", (short_url,))
+        row = cursor.fetchone()
 
-    # Get the return value - the full url
-    fullURL = ''
+        # Get the return value - the full url
+        full_url = None
 
-    # If we got something back from the db, return it
-    if row is not None:
-        fullURL = row[0]
+        # If we got something back from the db, return it
+        if row is not None:
+            full_url = row[0]
 
-    return fullURL
+        return full_url
+    except:
+        return None

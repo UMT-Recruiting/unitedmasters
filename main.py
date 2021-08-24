@@ -3,6 +3,8 @@
 # Description: Entry point into a simple Flask app to serve a URL Shortener API.
 # Author: Bryan Peabody
 #
+from os import abort
+
 from flask import Flask
 from flask import request
 from Utils import utils
@@ -26,43 +28,53 @@ def index():
     return "Default route"
 
 
-# The route for shortening a given URL
-@app.route('/shorten')
-def shortenURL():
+# The route for shortening a given URL. Setting method to GET for ease of testing either in a browser or Postman.
+# POST would be the best idea for prod.
+@app.route('/shorten', methods=['GET'])
+def shorten():
     # Get the URL from the request
-    fullURL = request.args.get('url')
+    full_url = request.args.get('url')
 
     # Is the URL valid?
-    if not validators.url(fullURL):
-        return "Invalid URL!"
+    if full_url is None or not validators.url(full_url):
+        return "Invalid URL!", 400
 
     # Does fullURL already have a short URL?
-    if dbUtils.does_full_url_exist(fullURL) == False:
+    if not dbUtils.does_full_url_exist(full_url):
         # Generate a random string that will be used for the shortened URL
-        randomString = utils.create_random_string()
+        random_string = utils.create_random_string()
 
         # Create the full shortened URL
-        shortURL = utils.create_shortened_url_string(HOST, PORT, randomString)
+        short_url = utils.create_shortened_url_string(HOST, PORT, random_string)
 
         # Persist the new pair
-        dbUtils.add_url_pair(shortURL, fullURL)
+        dbUtils.add_url_pair(short_url, full_url)
 
         # Return the shortened address
-        return shortURL
+        return short_url, 201
     else:
-        return "The URL already exists!"
+        return "The URL already exists!", 400
 
 
-# The route to translate a shortened URL to the full, original URL
-@app.route('/lengthen')
+# The route to translate a shortened URL to the full, original URL. Setting method to GET  for ease of testing
+# either in a browser or Postman. POST would be the best idea for prod.
+@app.route('/lengthen', methods=['GET'])
 def lengthen():
     # Get the URL from the request
-    shortURL = request.args.get('shortURL')
+    short_url = request.args.get('shortURL')
+
+    if short_url is None or not validators.url(short_url):
+        return "Invalid URL!", 400
 
     # Look up the full url
-    fullURL = dbUtils.get_full_url(shortURL)
+    full_url = dbUtils.get_full_url(short_url)
 
-    return fullURL
+    # If not found, return 404
+    if full_url is None:
+        return "Not found", 404
+
+    # Found it, return the value
+    return full_url, 200
 
 
 #
