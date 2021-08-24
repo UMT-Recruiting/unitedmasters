@@ -48,9 +48,12 @@ def shorten():
         short_url = utils.create_shortened_url_string(HOST, PORT, random_string)
 
         # Persist the new pair
-        dbUtils.add_url_pair(short_url, full_url)
+        result = dbUtils.add_url_pair(short_url, full_url)
 
-        # Return the shortened address
+        # Return the short url
+        if not result:
+            return "Failed to add url!", 400
+
         return short_url, 201
     else:
         return "The URL already exists!", 400
