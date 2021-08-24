@@ -1,5 +1,5 @@
 ## Overview
-This is a simple Python 3 web service using Flask. It has 2 end points:
+This is a simple Python 3 web service using Flask and SQLite3. It has 2 end points:
 
 1- The shorten endpoint - /shorten
 It takes a query parameter called url and returns a shortened url.
@@ -11,7 +11,11 @@ It takes a query parameter called shortURL and returns the original url, if it e
 
 Example url: http://localhost:4000/lengthen?shortURL=http://127.0.0.1:4000/dnvAXnJaBA
  
-Note: I left both endpoints as GET for ease of testing. You can do it in a browser or Postman (which is what I used).
+Notes: 
+
+-I left both endpoints as GET for ease of testing. You can do it in a browser or Postman (which is what I used).
+
+-The SQLite3 database is included in the git repo. It can be used as is.
 
 ## How to run
 I developed this using Python 3, PyCharm and Flask. There are a couple of dependecies in the requirements file. Please are steps to run it:
