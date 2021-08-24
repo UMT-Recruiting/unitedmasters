@@ -3,7 +3,6 @@
 # Description: Entry point into a simple Flask app to serve a URL Shortener API.
 # Author: Bryan Peabody
 #
-from os import abort
 
 from flask import Flask
 from flask import request
