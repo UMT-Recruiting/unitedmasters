@@ -47,3 +47,9 @@ I used approximately 2.5 hours for this. It broke down as:
 -Ideally, I'd like to have each shortened URL have a "last accessed timestamp". This would allow shortened urls that haven't been used in x days/months/years to be cleaned up and recycled.
 
 -Make the endpoints POST instead of GET so that there could be a UI that posts to them.
+
+-Instead of only upper and lowercase letters, numbers 0-9 could also be included to increase the range of random combinations
+
+-Use a relational database such as MySQL or Postgres instead of SQLite. 
+
+-Add approriate indexes and keys to the MySQL/Postgres table. I'd also add an id field (auto-increment) to the table.
