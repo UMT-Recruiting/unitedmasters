@@ -38,7 +38,7 @@ I used approximately 2.5 hours for this. It broke down as:
 
 -1 hour setting up some very basic unit tests, testing and fixing a bug or two
 
--Half an hour of over architecting it and thinking about if my solution to generating random short urls was good or not :)
+-Half an hour of over (re)architecting it and thinking about if my solution to generating random short urls was good or not :)
 
 ## Possible improvements
 
