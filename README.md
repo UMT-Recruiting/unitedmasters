@@ -21,6 +21,7 @@ Notes:
 I developed this using Python 3, PyCharm and Flask. There are a couple of dependecies in the requirements file. The steps to run it:
 
 > pip install Flask
+
 > pip install validators
 
 > py .\main.py
