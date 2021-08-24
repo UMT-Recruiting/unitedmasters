@@ -48,7 +48,7 @@ I used approximately 2.5 hours for this. It broke down as:
 
 -Make the endpoints POST instead of GET so that there could be a UI that posts to them.
 
--Instead of only upper and lowercase letters, numbers 0-9 could also be included to increase the range of random combinations
+-Instead of only upper and lowercase letters, numbers 0-9 could also be included to increase the range of random combinations.
 
 -Use a relational database such as MySQL or Postgres instead of SQLite. 
 
