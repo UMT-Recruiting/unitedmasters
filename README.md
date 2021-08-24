@@ -14,7 +14,8 @@ Example url: http://localhost:4000/lengthen?shortURL=http://127.0.0.1:4000/dnvAX
 ## How to run
 I developed this on Windows using Python 3, PyCharm and Flask. There are a couple of dependecies in the requirements file and it uses a virtual environment. Please are steps to run it:
 
-.\venv\Scripts\activate
+pip install Flask
+pip install validators
 
  py .\main.py
 
