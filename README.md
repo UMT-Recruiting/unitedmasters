@@ -36,7 +36,7 @@ I used approximately 2.5 hours for this. It broke down as:
 
 -1 hour getting the basic Flask API setup and the api endpoints working (basic functionality)
 
--1 hour setting up some very basic unit tests, testing and fixing a bug or two
+-1 hour setting up some basic unit tests, testing and fixing a bug or two
 
 -Half an hour of over/re-architecting it in my head after I finished as well as thinking about if my solution to generating random short urls could be improved :)
 ## Possible improvements
